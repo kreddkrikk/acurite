@@ -8,7 +8,7 @@ The following example configures this module to listen for signals from a
 433MHz RF receiver's data pin on pin 17 and wait until a valid chunk of 1 or 
 more blocks is received or a 70-second timeout is reached:
 
-```
+```python
 from acurite523 import Acurite523
 
 acurite523 = Acurite523(pin_data=17)
