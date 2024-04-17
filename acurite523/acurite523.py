@@ -34,7 +34,6 @@ import sys
 import threading
 import time
 
-TIMEOUT = 70                    # 00523M 60-second update interval +10
 CHUNK_READ_TIME = 1             # Time in seconds to read an RF signal chunk
 SIGNAL_BIT_LENGTH = 48          # Length of block in bits
 SIGNAL_INV = -2
