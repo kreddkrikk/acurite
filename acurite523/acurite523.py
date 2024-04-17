@@ -50,8 +50,6 @@ SIG_FREEZER = 0xc049            # Signatures seem to be hardcoded?
 SIG_FRIDGE = 0xc07c
 MULTICAST_ADDR = '224.3.29.70'  # For noise reports only
 MULTICAST_PORT = 51000
-UNIT_CELSIUS = 0
-UNIT_FAHRENHEIT = 1
 
 class Acurite523:
     def __init__(self, pin_data, verbose=False, debug=False):
@@ -66,7 +64,6 @@ class Acurite523:
         self.fridge_battery = -1
         self.fridge_signal = 0
         self.fridge_temp = None
-        self.unit = UNIT_CELSIUS
         self.multicaster = None
         self.pin_data = pin_data
         self.print_verbose = print if verbose else lambda *a, **k: None
