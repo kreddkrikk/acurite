@@ -68,12 +68,13 @@ class Acurite523:
         self.print_verbose = print if verbose else lambda *a, **k: None
         self.print_debug = print if debug else lambda *a, **k: None
         self.condition = threading.Condition()
-        def handler(s, f):
-            sys.exit(0)
-        signal.signal(signal.SIGINT, handler)
         self.plot = [[], []]
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.pin_data, GPIO.IN)
+        def handler(s, f):
+            self.stop()
+            sys.exit(0)
+        signal.signal(signal.SIGINT, handler)
 
     def enable_multicast(self):
         self.multicaster = socket.socket(
