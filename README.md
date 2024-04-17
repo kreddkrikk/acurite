@@ -1,5 +1,6 @@
 # acurite
-Scripts to parse RF signals from wireless AcuRite models using a 433MHz receiver
+
+Scripts to parse RF signals from wireless AcuRite models using a 433MHz receiver.
 
 # Introduction
 
