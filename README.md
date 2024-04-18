@@ -4,7 +4,7 @@ Scripts to parse RF signals from wireless AcuRite models using a 433MHz receiver
 
 # Introduction
 
-10 years ago someone [reverse engineered](https://rayshobby.net/reverse-engineer-wireless-temperature-humidity-rain-sensors-part-2/) the RF signals of the AcuRite 00592W3 humidity/temperature sensor. Using this as a starting point, I decided to do the same with more recent models for data logging purposes, using cheap 433MHz receivers to capture RF signals and a Raspberry Pi to interface with them and store the data to disk.
+In 2014 someone [reverse engineered](https://rayshobby.net/reverse-engineer-wireless-temperature-humidity-rain-sensors-part-2/) the RF signals of the AcuRite 00592W3 humidity/temperature sensor. Using this as a starting point, I decided to do the same with more recent models for data logging purposes, using cheap 433MHz receivers to capture RF signals and a Raspberry Pi to interface with them and store the data to disk.
 
 # Supported products
 
