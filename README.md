@@ -23,7 +23,7 @@ Any IC or board with digital pins that are capable of interfacing with a 433MHz 
 
 A 433MHz superheterodyne is recommended for capturing RF signals from wireless AcuRite thermometers. The following models have been tested.
 
-### SRX882
+### SRX882S
 
 Accurate but fails to capture signals from certain wireless units at a distance. For the latter a more sensitive model like the RXB12 should be used.
 
