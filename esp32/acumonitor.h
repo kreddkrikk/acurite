@@ -3,19 +3,12 @@
 
 /* All network packets must be prefixed with this value. */
 #define TAG_TEMPMONITOR 0x38073162
-#define TAG_RF433_NOISE 0x75b4e22b
 
 /* Models */
-#define MODEL_DHT22       8680
-#define MODEL_ESP32       1883
-#define MODEL_RPI         3933
 #define MODEL_ACURITE523  1592
 #define MODEL_ACURITE609  6585
 
 /* Devices */
-#define DEVICE_DHT22    1577
-#define DEVICE_ESP32    5908
-#define DEVICE_RPI      7171
 #define DEVICE_FREEZER  9690
 #define DEVICE_FRIDGE   7784
 #define DEVICE_OUTDOOR  8501
@@ -26,9 +19,6 @@
 #define STATUS_READ_FAIL     2
 #define STATUS_TIMEOUT       3
 #define STATUS_NO_DATA       4
-#define STATUS_DHT_NOTFOUND  5
-#define STATUS_DHT_BUFFER    6
-#define STATUS_DHT_CHECKSUM  7
 
 /* Format must match between sender and receiver. */
 struct Payload {
