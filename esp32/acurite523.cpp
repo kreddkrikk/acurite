@@ -22,7 +22,7 @@ int Acurite523::Model::get_rfs_type(uint8_t rfs, uint32_t duration) {
        :param int duration: signal duration, in microseconds
        :return: the signal type
        :rtype: int
-     */
+       */
     if (rfs == 0) {
         if (duration >= 100 && duration < 300)
             return ACURITE523_SIGNAL_BIT_0_OFF;
@@ -76,7 +76,7 @@ void Acurite523::Model::close_chunk() {
 
 uint64_t Acurite523::Model::parse_rf(uint32_t duration, uint8_t rfs) {
     /* Parse a single RF signal && update chunk/bitstreams.
-     */
+    */
     uint64_t result = 0;
     int rfs_type = ACURITE523_SIGNAL_INV;
     rfs_type = get_rfs_type(rfs, duration);
@@ -179,7 +179,7 @@ bool Acurite523::Device::validate_bitstream(uint64_t bitstream) {
 
        :param int bitstream: the bitstream of data to validate
        :return: true if bitstream is good, false if bad
-     */
+       */
     // Parse and validate data
     if (bitstream == 0)
         return false;

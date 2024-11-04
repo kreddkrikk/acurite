@@ -23,56 +23,56 @@ void updateStats(Acurite::Device& device) {
 }
 
 bool parseRf(uint32_t duration, uint8_t rfs) {
-    uint64_t result;
-    if (result = acurite523.parse_rf(duration, rfs)) {
-        for (Acurite523::Device device : acurite523.devices) {
-            if (device.validate_bitstream(result)) {
-                updateStats(device);
-                return true;
-            }
-        }
+  uint64_t result;
+  if (result = acurite523.parse_rf(duration, rfs)) {
+    for (Acurite523::Device device : acurite523.devices) {
+      if (device.validate_bitstream(result)) {
+        updateStats(device);
+        return true;
+      }
     }
-    if (result = acurite609.parse_rf(duration, rfs)) {
-        for (Acurite609::Device device : acurite609.devices) {
-            if (device.validate_bitstream(result)) {
-                updateStats(device);
-                return true;
-            }
-        }
+  }
+  if (result = acurite609.parse_rf(duration, rfs)) {
+    for (Acurite609::Device device : acurite609.devices) {
+      if (device.validate_bitstream(result)) {
+        updateStats(device);
+        return true;
+      }
     }
-    return false;
+  }
+  return false;
 }
 
 void resetRf() {
-    acurite523.clear();
-    acurite609.clear();
-    start = micros();
+  acurite523.clear();
+  acurite609.clear();
+  start = micros();
 }
 
 void loop() {
-    /* Read a continous stream of RF pulses until valid temperature data is
-       received. Performs analog to digital conversion in each read via the 
-       model-specific parsing function. The parsing function attempts to 
-       filter out any noise and build a valid bitstream of binary data comprising 
-       the temperature, humidity, etc.
+  /* Read a continous stream of RF pulses until valid temperature data is
+     received. Performs analog to digital conversion in each read via the 
+     model-specific parsing function. The parsing function attempts to 
+     filter out any noise and build a valid bitstream of binary data comprising 
+     the temperature, humidity, etc.
      */
-    int rfs = 0;
-    uint32_t now = 0;
-    uint32_t duration = 0;
+  int rfs = 0;
+  uint32_t now = 0;
+  uint32_t duration = 0;
 
-    // Read until a valid bitstream is received
-    rfs = digitalRead(PIN_RX) ^ 1;
-    now = micros();
-    if (prevRfs >= 0 && rfs != prevRfs) {
-        duration = now - start;
-        if (duration >= 100) {
-            // Parse model-specific RF pulses
-            if (parseRf(duration, prevRfs))
-                resetRf();
-        }
+  // Read until a valid bitstream is received
+  rfs = digitalRead(PIN_RX) ^ 1;
+  now = micros();
+  if (prevRfs >= 0 && rfs != prevRfs) {
+    duration = now - start;
+    if (duration >= 100) {
+      // Parse model-specific RF pulses
+      if (parseRf(duration, prevRfs))
+        resetRf();
     }
-    if (rfs != prevRfs)
-        start = now;
-    prevRfs = rfs;
+  }
+  if (rfs != prevRfs)
+    start = now;
+  prevRfs = rfs;
 }
 
