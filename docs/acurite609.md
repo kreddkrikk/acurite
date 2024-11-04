@@ -1,27 +1,6 @@
 # AcuRite Digital Thermometer model 00609SBLA1
 
-Sniffs 433MHz RF signals from the AcuRite 00609SBLA2 outdoor unit using the SRX882S Micropower Superheterodyne Receiver Module. The 00609SBLA2 outdoor unit sends temperature and humidity data as analog RF signals, approximately 9 times every 5 minutes (~33.33 seconds). Temperature range per the manual is -40C to 70C.
-
-## Usage
-
-The following example configures this module to listen for signals from a 
-433MHz RF receiver's data pin on pin 23 and wait until a valid chunk of 1 or
-more blocks is received or a 40-second timeout is reached:
-
-```python
-from acurite609 import Acurite609
-
-acurite609 = Acurite609(pin_data=23)
-acurite609.start()
-
-while True:
-    if acurite609.available(timeout=40):
-        humidity = acurite609.humidity
-        temperature = acurite609.temperature
-        print(f'{temperature:.1f}C {humidity}%')
-    else:
-        print(f'timeout')
-```
+Sniffs 433MHz radio frequency (RF) signals from the AcuRite 00609SBLA2 outdoor unit using the SRX882S Micropower Superheterodyne Receiver Module. The 00609SBLA2 outdoor unit sends temperature and humidity data as analog RF signals, approximately 9 times every 5 minutes (~33.33 seconds). Temperature range per the manual is -40C to 70C.
 
 ## Analog RF signal to digital conversion format
 
@@ -71,6 +50,3 @@ Checksum:     01111010
 
 The signature is randomly generated each time the device boots.
 
-## Notes on terms used in script
-
-The abbreviation 'rfs' refers to RF signals, received directly from the SRX882S. RF signals are different from binary data. Binary data is data created by timing parsed RF signals. An 'on' bit, or a 1, is approximately 2ms of contiguous RF signals while an 'off' bit (0) is about 1ms.
