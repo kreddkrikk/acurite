@@ -1,6 +1,6 @@
 Source files for use with ESP32 systems. Modify/rename main source file `acumonitor.ino` as needed. When valid data is received by an Acurite device, `updateStats` is called:
 
-```
+```cpp
 void updateStats(Acurite::Device& device) {
   Payload *payload = device.create_payload(STATUS_OK);
   /* ... do something with payload ... */
@@ -10,7 +10,7 @@ void updateStats(Acurite::Device& device) {
 
 `Payload` definition:
 
-```
+```cpp
 struct Payload {
     uint32_t tag;
     uint16_t model;
