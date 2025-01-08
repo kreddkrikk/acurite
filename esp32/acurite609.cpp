@@ -165,6 +165,7 @@ bool Acurite609::Device::validate_bitstream(uint64_t bitstream) {
         Serial.println(sig, HEX);
         return false;
     }
+    uint8_t bat = (bitstream >> 30) & 0x03;
     int cha = (bitstream >> 28) & 0x03;
     if (cha != ACURITE609_CHANNEL_ID) {
         Serial.print("bad channel: ");
@@ -176,9 +177,8 @@ bool Acurite609::Device::validate_bitstream(uint64_t bitstream) {
         Serial.println(sig, HEX);
         return false;
     }
-    uint8_t bat = (bitstream >> 30) & 0x03;
     float temp = (bitstream >> 15) & 0x1fff;
-    if ((uint16_t)temp & 0x1000 == 0x1000)
+    if (((uint16_t)temp & 0x1000) == 0x1000)
         temp = -(0x2000 - temp);
     temp /= 20;
     float hum = (bitstream >> 8) & 0x7f;
